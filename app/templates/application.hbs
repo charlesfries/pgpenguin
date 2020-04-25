@@ -1,5 +1,31 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<BsNavbar @type="dark" @backgroundColor="dark" @collapsed={{true}} @class="mb-3"
+	@onCollapse={{action (mut collapsed) true}} @onExpand={{action (mut collapsed) false}} as |navbar|>
+	<div class="container">
+		<div class="navbar-header">
+			{{navbar.toggle}}
+			<LinkTo @route="index" @class="navbar-brand">PGPenguin</LinkTo>
+		</div>
+		<navbar.content>
+			<navbar.nav as |nav|>
+				<nav.item>
+					<nav.link-to @route="generate">Generate</nav.link-to>
+				</nav.item>
+				<nav.item>
+					<nav.link-to @route="encrypt">Encrypt</nav.link-to>
+				</nav.item>
+				<nav.item>
+					<nav.link-to @route="decrypt">Decrypt</nav.link-to>
+				</nav.item>
+			</navbar.nav>
+			<navbar.nav @class="ml-auto" as |nav|>
+				<nav.item>
+					<nav.link-to @route="about">About</nav.link-to>
+				</nav.item>
+			</navbar.nav>
+		</navbar.content>
+	</div>
+</BsNavbar>
 
-{{outlet}}
+<div class="container">
+	{{outlet}}
+</div>

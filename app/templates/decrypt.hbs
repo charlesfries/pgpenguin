@@ -1,0 +1,9 @@
+<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action (mut xyz)}} as |form|>
+	<form.element @controlType="textarea" @label="Private key" @property="textarea" @rows={{10}} @required={{true}} />
+
+	<form.element @controlType="password" @label="Password" @property="password" />
+
+	<form.element @controlType="textarea" @label="Message" @property="textarea" @rows={{10}} @required={{true}} />
+
+	<BsButton @defaultText="Decrypt" @type="primary" @buttonType="submit" />
+</BsForm>
