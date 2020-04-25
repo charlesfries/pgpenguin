@@ -8,7 +8,9 @@ module.exports = function(defaults) {
       'bootstrapVersion': 4,
       'importBootstrapCSS': false
     }
-  });
+	});
+	
+	app.import('node_modules/openpgp/dist/openpgp.min.js');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.
