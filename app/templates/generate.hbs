@@ -1,1 +1,38 @@
-{{outlet}}
+<div class="row">
+	<div class="col">
+
+		<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
+			<BsButton @defaultText="Generate" @type="primary" @buttonType="submit" />
+		</BsForm>
+
+		{{#if privateKey}}
+			<div class="row">
+				<div class="col-6">
+
+					<div class="card mt-3">
+						<div class="card-body">
+							<pre><code>{{privateKey}}</code></pre>
+						</div>
+					</div>
+
+				</div>
+				<div class="col-6">
+
+					<div class="card mt-3">
+						<div class="card-body">
+							<pre><code>{{publicKey}}</code></pre>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		{{/if}}
+
+	</div>
+	{{!-- <div class="col-4">
+
+		<h4>Help</h4>
+
+	</div> --}}
+</div>
