@@ -11,15 +11,15 @@ export default class GenerateController extends Controller {
 		let result = await openpgp.generateKey({ curve: 'brainpoolP512r1',  userIds: [{ name: 'Test', email: 'test@test.com' }] });
 		try {
 
-			let pair = this.store.createRecord('pair', {
+			let key = this.store.createRecord('key', {
 				privateKey: result.privateKeyArmored,
 				publicKey: result.publicKeyArmored
 			});
 
-			pair.save();
+			key.save();
 
-			this.privateKey = pair.privateKey;
-			this.publicKey = pair.publicKey;
+			this.privateKey = key.privateKey;
+			this.publicKey = key.publicKey;
 		} catch(_) {}
 	}
 	

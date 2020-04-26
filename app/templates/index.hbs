@@ -1,35 +1,27 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Type</th>
-      <th scope="col">Name</th>
-      <th scope="col">Email</th>
-      <th scope="col">Created</th>
-      <th scope="col">Fingerprint</th>
-    </tr>
-  </thead>
-  <tbody>
-		{{#each model as |pair|}}
+<div class="p-4">
+
+	<table class="table table-hover">
+		<thead>
 			<tr>
-				<th scope="row">{{pair.createdAt}}</th>
-				<td>{{pair.createdAt}}</td>
-				<td>{{pair.createdAt}}</td>
-				<td>{{pair.createdAt}}</td>
+				<th scope="col">Type</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Created</th>
+				<th scope="col">Fingerprint</th>
 			</tr>
-		{{/each}}
-  </tbody>
-</table>
+		</thead>
+		<tbody>
+			{{#each model as |key|}}
+				<tr>
+					<th scope="row">{{key.createdAt}}</th>
+					<td>{{key.createdAt}}</td>
+					<td>{{key.createdAt}}</td>
+					<td>{{key.createdAt}}</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
 
+	{{model.length}} keys
 
-
-<div class="row">
-	<div class="col">
-		<BsButton @type="primary" @onClick={{action (mut xyz)}}>Generate</BsButton>
-	</div>
-	<div class="col">
-		<BsButton @type="success" @onClick={{action (mut xyz)}}>Encrypt</BsButton>
-	</div>
-	<div class="col">
-		<BsButton @type="danger" @onClick={{action (mut xyz)}}>Decrypt</BsButton>
-	</div>
 </div>
