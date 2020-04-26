@@ -5,14 +5,6 @@
 		<div class="flex-grow-1 p-4 border-right">
 
 			<h3>1. <span class="text-muted">Public key</span></h3>
-			<div class="form-group">
-				<label for="exampleFormControlSelect1">Example select</label>
-				<select class="form-control" id="exampleFormControlSelect1">
-					{{#each model as |pair|}}
-						<option>{{pair.createdAt}}</option>
-					{{/each}}
-				</select>
-			</div>
 			<KeyDropdown @keys={{model}} />
 			<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{10}} @required={{true}} />
 
