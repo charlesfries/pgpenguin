@@ -13,6 +13,6 @@ Router.map(function() {
   this.route('about');
   this.route('new');
   this.route('keys', function() {
-    this.route('key');
+    this.route('key', { path: '/:key_id' });
   });
 });

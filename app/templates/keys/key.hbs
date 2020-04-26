@@ -1,1 +1,37 @@
-{{outlet}}
+<aside class="p-3">
+
+	<LinkTo @route="keys.index" @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">
+		<FaIcon @icon="times" />
+	</LinkTo>
+
+	<hr>
+	<h5>Details</h5>
+	<ul class="list-unstyled">
+		<li>Name: {{model.name}}</li>
+		<li>Email: {{model.email}}</li>
+		<li>Created at: {{timestamp model.createdAt}}</li>
+	</ul>
+
+	<hr>
+	<h5>Private key</h5>
+	<div class="btn-group btn-group-sm" role="group">
+		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="clone" /> Copy</button>
+		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="eye" /> Show</button>
+	</div>
+
+	<hr>
+	<h5>Public key</h5>
+	<div class="btn-group btn-group-sm" role="group">
+		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="clone" /> Copy</button>
+		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="eye" /> Show</button>
+	</div>
+
+	<hr>
+	<h5>Actions</h5>
+	<div class="btn-group btn-group-sm mt-auto" role="group">
+		<button type="button" class="btn btn-secondary" {{action "showPublic" key}}>Encrypt</button>
+		<button type="button" class="btn btn-secondary" {{action "showPrivate" key}}>Decrypt</button>
+		<button type="button" class="btn btn-danger"><FaIcon @icon="trash" /> Delete</button>
+	</div>
+	
+</aside>

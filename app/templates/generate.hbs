@@ -1,40 +1,78 @@
-<div class="row">
-	<div class="col">
+<main class="p-4">
 
-		<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
-			<form.element @controlType="text" @label="Name (Optional)" @property="name" />
-			<form.element @controlType="text" @label="Email (Optional)" @property="email" />
-			<BsButton @defaultText="Generate" @type="primary" @buttonType="submit" />
-		</BsForm>
+	<div class="row">
+		<div class="col-3">
 
-		{{#if privateKey}}
-			<div class="row">
-				<div class="col-6">
 
-					<div class="card mt-3">
-						<div class="card-body">
-							<pre><code>{{privateKey}}</code></pre>
-						</div>
+			<div class="accordion" id="accordionExample">
+				<div class="card">
+					<div class="card-header" id="headingOne">
+						<h2 class="mb-0">
+							<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+								Generate
+							</button>
+						</h2>
 					</div>
 
+					<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+						<div class="card-body">
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+						</div>
+					</div>
 				</div>
-				<div class="col-6">
 
-					<div class="card mt-3">
+				<div class="card">
+					<div class="card-header" id="headingTwo">
+						<h2 class="mb-0">
+							<button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+								Paste
+							</button>
+						</h2>
+					</div>
+					<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
 						<div class="card-body">
-							<pre><code>{{publicKey}}</code></pre>
+							Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
 						</div>
 					</div>
-
 				</div>
 			</div>
 
-		{{/if}}
 
+
+		</div>
+		<div class="col-9">
+
+			<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
+				<form.element @controlType="text" @label="Name (Optional)" @property="name" />
+				<form.element @controlType="text" @label="Email (Optional)" @property="email" />
+				<BsButton @defaultText="Generate" @type="primary" @buttonType="submit" />
+			</BsForm>
+
+			
+
+		</div>
 	</div>
-	{{!-- <div class="col-4">
 
-		<h4>Help</h4>
+</main>
 
-	</div> --}}
-</div>
+{{#if privateKey}}
+	<aside class="p-3">
+
+		<span class="text-success"><FaIcon @icon="check" /> Saved locally</span>
+
+		<div class="card mt-3">
+			<h5 class="card-header">Private key</h5>
+			<div class="card-body">
+				<p class="card-text"><pre><code>{{privateKey}}</code></pre></p>
+			</div>
+		</div>
+
+		<div class="card mt-3">
+			<h5 class="card-header">Public key</h5>
+			<div class="card-body">
+				<p class="card-text"><pre><code>{{publicKey}}</code></pre></p>
+			</div>
+		</div>
+
+	</aside>
+{{/if}}

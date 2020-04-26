@@ -1,1 +1,36 @@
+<main class="flex-grow-1">
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Type</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Created</th>
+				<th scope="col">Fingerprint</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{{#each model as |key|}}
+				<tr>
+					<th scope="row">-</th>
+					<td>{{timestamp key.createdAt}}</td>
+					<td>{{timestamp key.createdAt}}</td>
+					<td>{{timestamp key.createdAt}}</td>
+					<td>{{timestamp key.createdAt}}</td>
+					<td class="py-0 align-middle">
+						<LinkTo @route="keys.key" @model={{key}} @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">View</LinkTo>
+					</td>
+				</tr>
+			{{/each}}
+		</tbody>
+	</table>
+
+</main>
+
 {{outlet}}
+
+<footer class="p-3 border-top">
+	{{model.length}} keys
+</footer>

@@ -1,30 +1,37 @@
-<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
+<main>
 
-	<div class="row">
-		<div class="col">
+	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
 
-			<KeyDropdown @keys={{model}} />
+		<div class="row">
+			<div class="col">
 
-			<form.element @controlType="textarea" @label="Private key" @property="privateKey" @rows={{10}} @required={{true}} />
-			<form.element @controlType="password" @label="Password" @property="password" />
-				
+				<KeyDropdown @keys={{model}} />
 
+				<form.element @controlType="textarea" @label="Private key" @property="privateKey" @rows={{10}} @required={{true}} />
+				<form.element @controlType="password" @label="Password" @property="password" />
+					
+
+			</div>
+			<div class="col">
+
+				<form.element @controlType="textarea" @label="Message" @property="message" @rows={{10}} @required={{true}} />
+
+			</div>
 		</div>
-		<div class="col">
 
-			<form.element @controlType="textarea" @label="Message" @property="message" @rows={{10}} @required={{true}} />
+		<BsButton @defaultText="Decrypt" @type="primary" @buttonType="submit" />
 
-		</div>
-	</div>
+	</BsForm>
 
-	<BsButton @defaultText="Decrypt" @type="primary" @buttonType="submit" />
-
-</BsForm>
+</main>
 
 {{#if result}}
-	<div class="card mt-3">
-		<div class="card-body">
-			{{result}}
+	<aside class="p-3">
+		<div class="card">
+			<h5 class="card-header">Message</h5>
+			<div class="card-body">
+				<p class="card-text">{{result}}</p>
+			</div>
 		</div>
-	</div>
+	</aside>
 {{/if}}
