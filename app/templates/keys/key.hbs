@@ -35,3 +35,11 @@
 	</div>
 	
 </aside>
+
+<BsModalSimple @open={{publicOpen}} @title="Public Key" @onHidden={{action "hidePublic"}}>
+	<pre><code>{{selectedKey.publicKey}}</code></pre>
+</BsModalSimple>
+
+<BsModalSimple @open={{privateOpen}} @title="Private Key" @onHidden={{action "hidePrivate"}}>
+	<pre><code>{{selectedKey.privateKey}}</code></pre>
+</BsModalSimple>
