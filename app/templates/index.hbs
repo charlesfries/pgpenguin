@@ -1,6 +1,6 @@
 <div class="p-4">
 
-	<table class="table table-hover">
+	<table class="table table-bordered table-hover">
 		<thead>
 			<tr>
 				<th scope="col">Type</th>
@@ -8,15 +8,24 @@
 				<th scope="col">Email</th>
 				<th scope="col">Created</th>
 				<th scope="col">Fingerprint</th>
+				<th scope="col">Actions</th>
 			</tr>
 		</thead>
 		<tbody>
 			{{#each model as |key|}}
 				<tr>
-					<th scope="row">{{key.createdAt}}</th>
-					<td>{{key.createdAt}}</td>
-					<td>{{key.createdAt}}</td>
-					<td>{{key.createdAt}}</td>
+					<th scope="row">-</th>
+					<td>{{timestamp key.createdAt}}</td>
+					<td>{{timestamp key.createdAt}}</td>
+					<td>{{timestamp key.createdAt}}</td>
+					<td>{{timestamp key.createdAt}}</td>
+					<td class="py-0 align-middle">
+						<div class="btn-group btn-group-sm" role="group">
+							<button type="button" class="btn btn-secondary" {{action "showPublic" key}}>Public</button>
+							<button type="button" class="btn btn-secondary" {{action "showPrivate" key}}>Private</button>
+							<button type="button" class="btn btn-danger"><FaIcon @icon="trash" /></button>
+						</div>
+					</td>
 				</tr>
 			{{/each}}
 		</tbody>
@@ -25,3 +34,11 @@
 	{{model.length}} keys
 
 </div>
+
+<BsModalSimple @open={{publicOpen}} @title="Public Key" @onHidden={{action "hidePublic"}}>
+	<pre><code>{{selectedKey.publicKey}}</code></pre>
+</BsModalSimple>
+
+<BsModalSimple @open={{privateOpen}} @title="Private Key" @onHidden={{action "hidePrivate"}}>
+	<pre><code>{{selectedKey.privateKey}}</code></pre>
+</BsModalSimple>

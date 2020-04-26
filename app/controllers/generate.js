@@ -8,7 +8,7 @@ export default class GenerateController extends Controller {
 	@tracked publicKey;
 
 	@action async submit() {
-		let result = await openpgp.generateKey({ curve: 'brainpoolP512r1',  userIds: [{ name: 'Test', email: 'test@test.com' }] });
+		let result = await openpgp.generateKey({ curve: 'brainpoolP512r1', userIds: [{ name: 'Test', email: 'test@test.com' }] });
 		try {
 
 			let key = this.store.createRecord('key', {

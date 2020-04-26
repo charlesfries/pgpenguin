@@ -2,6 +2,8 @@
 	<div class="col">
 
 		<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
+			<form.element @controlType="text" @label="Name (Optional)" @property="name" />
+			<form.element @controlType="text" @label="Email (Optional)" @property="email" />
 			<BsButton @defaultText="Generate" @type="primary" @buttonType="submit" />
 		</BsForm>
 
