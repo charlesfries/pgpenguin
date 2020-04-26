@@ -11,4 +11,5 @@ Router.map(function() {
   this.route('encrypt');
   this.route('decrypt');
   this.route('about');
+  this.route('new');
 });

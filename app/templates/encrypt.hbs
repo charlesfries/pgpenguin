@@ -1,1 +1,24 @@
-{{outlet}}
+<div class="row">
+	<div class="col-8">
+
+		<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
+			<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{10}} @required={{true}} />
+			<form.element @controlType="textarea" @label="Message" @property="message" @rows={{10}} @required={{true}} />
+			<BsButton @defaultText="Encrypt" @type="primary" @buttonType="submit" />
+		</BsForm>
+
+		{{#if result}}
+			<div class="card mt-3">
+				<div class="card-body">
+					{{result}}
+				</div>
+			</div>
+		{{/if}}
+
+	</div>
+	<div class="col-4">
+
+		<h4>Help</h4>
+
+	</div>
+</div>

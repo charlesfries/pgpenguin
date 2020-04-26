@@ -1,3 +1,27 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Type</th>
+      <th scope="col">Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Created</th>
+      <th scope="col">Fingerprint</th>
+    </tr>
+  </thead>
+  <tbody>
+		{{#each model as |pair|}}
+			<tr>
+				<th scope="row">{{pair.createdAt}}</th>
+				<td>{{pair.createdAt}}</td>
+				<td>{{pair.createdAt}}</td>
+				<td>{{pair.createdAt}}</td>
+			</tr>
+		{{/each}}
+  </tbody>
+</table>
+
+
+
 <div class="row">
 	<div class="col">
 		<BsButton @type="primary" @onClick={{action (mut xyz)}}>Generate</BsButton>
