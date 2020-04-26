@@ -4,6 +4,7 @@
 		<thead>
 			<tr>
 				<th scope="col">Type</th>
+				<th scope="col">Nickname</th>
 				<th scope="col">Name</th>
 				<th scope="col">Email</th>
 				<th scope="col">Created</th>
@@ -15,6 +16,7 @@
 			{{#each model as |key|}}
 				<tr>
 					<th scope="row">-</th>
+					<td>{{timestamp key.nickname}}</td>
 					<td>{{timestamp key.createdAt}}</td>
 					<td>{{timestamp key.createdAt}}</td>
 					<td>{{timestamp key.createdAt}}</td>
@@ -31,6 +33,6 @@
 
 {{outlet}}
 
-<footer class="p-3 border-top">
+<footer class="text-muted p-3 border-top">
 	{{model.length}} keys
 </footer>
