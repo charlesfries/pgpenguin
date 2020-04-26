@@ -13,6 +13,7 @@
 					{{/each}}
 				</select>
 			</div>
+			<KeyDropdown @keys={{model}} />
 			<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{10}} @required={{true}} />
 
 		</div>

@@ -1,39 +1,35 @@
-<div class="p-4">
-
-	<table class="table table-bordered table-hover">
-		<thead>
+<table class="table table-bordered table-hover">
+	<thead>
+		<tr>
+			<th scope="col">Type</th>
+			<th scope="col">Name</th>
+			<th scope="col">Email</th>
+			<th scope="col">Created</th>
+			<th scope="col">Fingerprint</th>
+			<th scope="col">Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		{{#each model as |key|}}
 			<tr>
-				<th scope="col">Type</th>
-				<th scope="col">Name</th>
-				<th scope="col">Email</th>
-				<th scope="col">Created</th>
-				<th scope="col">Fingerprint</th>
-				<th scope="col">Actions</th>
+				<th scope="row">-</th>
+				<td>{{timestamp key.createdAt}}</td>
+				<td>{{timestamp key.createdAt}}</td>
+				<td>{{timestamp key.createdAt}}</td>
+				<td>{{timestamp key.createdAt}}</td>
+				<td class="py-0 align-middle">
+					<div class="btn-group btn-group-sm" role="group">
+						<button type="button" class="btn btn-secondary" {{action "showPublic" key}}>Public</button>
+						<button type="button" class="btn btn-secondary" {{action "showPrivate" key}}>Private</button>
+						<button type="button" class="btn btn-danger"><FaIcon @icon="trash" /></button>
+					</div>
+				</td>
 			</tr>
-		</thead>
-		<tbody>
-			{{#each model as |key|}}
-				<tr>
-					<th scope="row">-</th>
-					<td>{{timestamp key.createdAt}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td class="py-0 align-middle">
-						<div class="btn-group btn-group-sm" role="group">
-							<button type="button" class="btn btn-secondary" {{action "showPublic" key}}>Public</button>
-							<button type="button" class="btn btn-secondary" {{action "showPrivate" key}}>Private</button>
-							<button type="button" class="btn btn-danger"><FaIcon @icon="trash" /></button>
-						</div>
-					</td>
-				</tr>
-			{{/each}}
-		</tbody>
-	</table>
+		{{/each}}
+	</tbody>
+</table>
 
-	{{model.length}} keys
-
-</div>
+{{model.length}} keys
 
 <BsModalSimple @open={{publicOpen}} @title="Public Key" @onHidden={{action "hidePublic"}}>
 	<pre><code>{{selectedKey.publicKey}}</code></pre>
