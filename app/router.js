@@ -11,7 +11,6 @@ Router.map(function() {
   this.route('encrypt');
   this.route('decrypt');
   this.route('about');
-  this.route('new');
   this.route('keys', function() {
     this.route('key', { path: '/:key_id' });
   });
