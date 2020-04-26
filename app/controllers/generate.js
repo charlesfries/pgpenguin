@@ -16,6 +16,8 @@ export default class GenerateController extends Controller {
 				publicKey: result.publicKeyArmored
 			});
 
+			pair.save();
+
 			this.privateKey = pair.privateKey;
 			this.publicKey = pair.publicKey;
 		} catch(_) {}
