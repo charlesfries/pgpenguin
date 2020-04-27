@@ -6,13 +6,11 @@ export default class KeyModel extends Model {
 	@attr('string') privateKey;
 	@attr('string') publicKey;
 
-	// async get name() {
-	// 	let thing = await openpgp.key.readArmored(this.publicKey);
-	// 	return thing;
-	// }
+	get name() {
+		return openpgp.key.readArmored(this.publicKey)
+	}
 
-	// get email() {
-	// 	let thing = await openpgp.key.readArmored(this.publicKey);
-	// 	return thing;
-	// }
+	get email() {
+		return 'asdf@gmail.com';
+	}
 }

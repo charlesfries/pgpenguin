@@ -7,11 +7,10 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function() {
+	this.route('keys', function() {
+    this.route('key', { path: '/:key_id' });
+  });
   this.route('generate');
   this.route('encrypt');
   this.route('decrypt');
-  this.route('about');
-  this.route('keys', function() {
-    this.route('key', { path: '/:key_id' });
-  });
 });

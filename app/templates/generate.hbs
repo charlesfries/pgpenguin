@@ -1,14 +1,14 @@
 <main class="p-3">
 
 	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
-		<form.element @controlType="text" @label="Name (Optional)" @property="name" />
-		<form.element @controlType="text" @label="Email (Optional)" @property="email" />
+		<form.element @property="name" @controlType="text" @label="Name (Optional)" @placeholder="e.g. John Smith" />
+		<form.element @property="email" @controlType="text" @label="Email (Optional)" @placeholder="e.g. john.smith@gmail.com" />
 		<BsButton @defaultText="Generate" @type="primary" @buttonType="submit" />
 	</BsForm>
 
 </main>
 
-{{#if privateKey}}
+{{#if key}}
 	<aside class="p-3">
 
 		<span class="text-success"><FaIcon @icon="check" /> Saved locally</span>
@@ -16,14 +16,14 @@
 		<div class="card mt-3">
 			<h5 class="card-header">Private key</h5>
 			<div class="card-body">
-				<p class="card-text"><pre><code>{{privateKey}}</code></pre></p>
+				<p class="card-text"><pre><code>{{key.privateKey}}</code></pre></p>
 			</div>
 		</div>
 
 		<div class="card mt-3">
 			<h5 class="card-header">Public key</h5>
 			<div class="card-body">
-				<p class="card-text"><pre><code>{{publicKey}}</code></pre></p>
+				<p class="card-text"><pre><code>{{key.publicKey}}</code></pre></p>
 			</div>
 		</div>
 

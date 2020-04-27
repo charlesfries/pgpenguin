@@ -1,33 +1,39 @@
-<main class="flex-grow-1">
+<main class="p-3">
 
-	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th scope="col">Type</th>
-				<th scope="col">Nickname</th>
-				<th scope="col">Name</th>
-				<th scope="col">Email</th>
-				<th scope="col">Created</th>
-				<th scope="col">Fingerprint</th>
-				<th scope="col">Actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{{#each model as |key|}}
+	{{#if model}}
+		<table class="table table-hover">
+			<thead>
 				<tr>
-					<td>Standard</td>
-					<td>{{if key.nickname (timestamp key.nickname) "-"}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td>{{timestamp key.createdAt}}</td>
-					<td class="py-0 align-middle">
-						<LinkTo @route="keys.key" @model={{key}} @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">View</LinkTo>
-					</td>
+					<th scope="col">Type</th>
+					<th scope="col">Nickname</th>
+					<th scope="col">Name</th>
+					<th scope="col">Email</th>
+					<th scope="col">Created</th>
+					<th scope="col">Fingerprint</th>
+					<th scope="col">Actions</th>
 				</tr>
-			{{/each}}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{{#each model as |key|}}
+					<tr>
+						<td>Standard</td>
+						<td>{{if key.nickname (timestamp key.nickname) "-"}}</td>
+						<td>{{key.name}}</td>
+						<td>{{key.email}}</td>
+						<td>{{timestamp key.createdAt}}</td>
+						<td>abcxyz</td>
+						<td class="py-0 align-middle">
+							<LinkTo @route="keys.key" @model={{key}} @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">View</LinkTo>
+						</td>
+					</tr>
+				{{/each}}
+			</tbody>
+		</table>
+	{{else}}
+		No keys found. <LinkTo @route="generate">Click here</LinkTo> to generate one.
+	{{/if}}
+
+	
 
 </main>
 

@@ -4,8 +4,9 @@ import { action } from '@ember/object';
 
 export default class GenerateController extends Controller {
 
-	@tracked privateKey;
-	@tracked publicKey;
+	@tracked name;
+	@tracked email;
+	@tracked key;
 
 	@action async submit() {
 		let result = await openpgp.generateKey({ curve: 'brainpoolP512r1', userIds: [{ name: 'Test', email: 'test@test.com' }] });
@@ -17,9 +18,8 @@ export default class GenerateController extends Controller {
 			});
 
 			key.save();
+			this.key = key;
 
-			this.privateKey = key.privateKey;
-			this.publicKey = key.publicKey;
 		} catch(_) {}
 	}
 	
