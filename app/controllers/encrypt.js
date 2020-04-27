@@ -3,9 +3,9 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class EncryptController extends Controller {
-	@tracked result;
 	@tracked publicKey;
 	message;
+	@tracked result;
 
 	@action selectKey(key) {
 		if (key) {
