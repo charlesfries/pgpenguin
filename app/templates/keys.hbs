@@ -15,8 +15,8 @@
 		<tbody>
 			{{#each model as |key|}}
 				<tr>
-					<th scope="row">-</th>
-					<td>{{timestamp key.nickname}}</td>
+					<td>Standard</td>
+					<td>{{if key.nickname (timestamp key.nickname) "-"}}</td>
 					<td>{{timestamp key.createdAt}}</td>
 					<td>{{timestamp key.createdAt}}</td>
 					<td>{{timestamp key.createdAt}}</td>

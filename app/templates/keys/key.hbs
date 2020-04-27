@@ -1,45 +1,53 @@
 <aside class="p-3">
 
-	<LinkTo @route="keys.index" @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">
-		<FaIcon @icon="times" />
+	<LinkTo @route="keys.index" @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary mb-3">
+		<FaIcon @icon="times" /> Close
 	</LinkTo>
 
-	<hr>
-	<h5>Details</h5>
-	<ul class="list-unstyled">
-		<li>Name: {{model.name}}</li>
-		<li>Email: {{model.email}}</li>
-		<li>Created at: {{timestamp model.createdAt}}</li>
-	</ul>
-
-	<hr>
-	<h5>Private key</h5>
-	<div class="btn-group btn-group-sm" role="group">
-		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="clone" /> Copy</button>
-		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="eye" /> Show</button>
+	<div class="card mb-3">
+		<h5 class="card-header">Details</h5>
+		<div class="card-body">
+			<ul class="list-unstyled">
+				<li>Name: {{model.name}}</li>
+				<li>Email: {{model.email}}</li>
+				<li>Created at: {{timestamp model.createdAt}}</li>
+			</ul>
+			<div class="btn-group btn-group-sm mt-auto" role="group">
+				<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Encrypt</button>
+				<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Decrypt</button>
+				<button type="button" class="btn btn-danger" {{action "delete"}}><FaIcon @icon="trash" /> Delete</button>
+			</div>
+		</div>
 	</div>
 
-	<hr>
-	<h5>Public key</h5>
-	<div class="btn-group btn-group-sm" role="group">
-		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="clone" /> Copy</button>
-		<button type="button" class="btn btn-outline-primary" {{action (mut xyz)}}><FaIcon @icon="eye" /> Show</button>
+	<div class="card mb-3">
+		<h5 class="card-header">Private key</h5>
+		<div class="card-body">
+			<div class="btn-group btn-group-sm" role="group">
+				<button type="button" class="btn btn-outline-primary" {{on "click" this.copyPrivate}}><FaIcon @icon="clone" /> Copy</button>
+				{{!-- <button type="button" class="btn btn-outline-primary" {{action (mut privateOpen) true}}><FaIcon @icon="eye" /> Show</button> --}}
+			</div>
+			<p class="card-text"><pre><code>{{model.privateKey}}</code></pre></p>
+		</div>
 	</div>
-
-	<hr>
-	<h5>Actions</h5>
-	<div class="btn-group btn-group-sm mt-auto" role="group">
-		<button type="button" class="btn btn-secondary" {{action "showPublic" key}}>Encrypt</button>
-		<button type="button" class="btn btn-secondary" {{action "showPrivate" key}}>Decrypt</button>
-		<button type="button" class="btn btn-danger"><FaIcon @icon="trash" /> Delete</button>
+	
+	<div class="card mb-3">
+		<h5 class="card-header">Public key</h5>
+		<div class="card-body">
+			<div class="btn-group btn-group-sm" role="group">
+				<button type="button" class="btn btn-outline-primary" {{on "click" this.copyPublic}}><FaIcon @icon="clone" /> Copy</button>
+				{{!-- <button type="button" class="btn btn-outline-primary" {{action (mut publicOpen) true}}><FaIcon @icon="eye" /> Show</button> --}}
+			</div>
+			<p class="card-text"><pre><code>{{model.publicKey}}</code></pre></p>
+		</div>
 	</div>
 	
 </aside>
 
-<BsModalSimple @open={{publicOpen}} @title="Public Key" @onHidden={{action "hidePublic"}}>
-	<pre><code>{{selectedKey.publicKey}}</code></pre>
+<BsModalSimple @open={{privateOpen}} @title="Private key" @onHidden={{action (mut privateOpen) false}}>
+	<pre><code>{{model.privateKey}}</code></pre>
 </BsModalSimple>
 
-<BsModalSimple @open={{privateOpen}} @title="Private Key" @onHidden={{action "hidePrivate"}}>
-	<pre><code>{{selectedKey.privateKey}}</code></pre>
+<BsModalSimple @open={{publicOpen}} @title="Public key" @onHidden={{action (mut publicOpen) false}}>
+	<pre><code>{{model.publicKey}}</code></pre>
 </BsModalSimple>

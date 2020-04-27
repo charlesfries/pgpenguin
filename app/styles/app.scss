@@ -9,8 +9,8 @@ $font-size-base: .875rem;
 body { display: grid; grid-template-areas: "nav nav" "main aside" "footer footer";
 	grid-template-columns: auto max-content; grid-template-rows: auto 1fr auto; height: 100vh;
 	nav { grid-area: nav; }
-	main { grid-area: main; }
-	aside { grid-area: aside; }
+	main { grid-area: main; overflow-y: auto; }
+	aside { grid-area: aside; overflow-y: auto; }
 	footer { grid-area: footer; }
 }
 

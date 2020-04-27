@@ -4,9 +4,15 @@ import { action } from '@ember/object';
 
 export default class DecryptController extends Controller {
 	@tracked result;
-	privateKey;
+	@tracked privateKey;
 	password;
 	message;
+
+	@action selectKey(key) {
+		if (key) {
+			this.privateKey = key.privateKey;
+		}
+	}
 
 	@action async submit() {
 		let { privateKey, password, message } = this;

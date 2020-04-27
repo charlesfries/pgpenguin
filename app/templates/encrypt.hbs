@@ -1,56 +1,20 @@
-<main>
+<main class="p-3">
 
 	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
 
-		<div class="d-flex">
+		<KeyDropdown @keys={{model}} @onSelect={{action "selectKey"}} />
+		<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{22}} @required={{true}} />
 
-			<div class="flex-grow-1 p-4 border-right">
-
-				<h3>1. <span class="text-muted">Public key</span></h3>
-				<KeyDropdown @keys={{model}} />
-				<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{10}} @required={{true}} />
-
-			</div>
-
-			<div class="flex-grow-1 p-4">
-
-				<h3>2. <span class="text-muted">Unencrypted message</span></h3>
-				<form.element @controlType="textarea" @label="Message" @property="message" @rows={{10}} @required={{true}} />
-
-			</div>
-
-		</div>
-
-		{{!-- <div class="row">
-			<div class="col">
-
-				<h3>1. <span class="text-muted">Public key</span></h3>
-				<div class="form-group">
-					<label for="exampleFormControlSelect1">Example select</label>
-					<select class="form-control" id="exampleFormControlSelect1">
-						{{#each model as |pair|}}
-							<option>{{pair.createdAt}}</option>
-						{{/each}}
-					</select>
-				</div>
-				<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{10}} @required={{true}} />
-
-			</div>
-			<div class="col">
-
-				<h3>2. <span class="text-muted">Unencrypted message</span> </h3>
-				<form.element @controlType="textarea" @label="Message" @property="message" @rows={{10}} @required={{true}} />
-
-			</div>
-		</div> --}}
+		<form.element @controlType="textarea" @label="Unencrypted message" @property="message" @rows={{10}} @required={{true}} />
 
 		<BsButton @defaultText="Encrypt" @type="primary" @buttonType="submit" />
+
 	</BsForm>
 
 </main>
 
 {{#if result}}
-	<aside class="p-3 shadow">
+	<aside class="p-3">
 		<div class="card">
 			<h5 class="card-header">Message</h5>
 			<div class="card-body">

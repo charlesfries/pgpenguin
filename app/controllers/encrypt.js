@@ -4,8 +4,14 @@ import { action } from '@ember/object';
 
 export default class EncryptController extends Controller {
 	@tracked result;
-	publicKey;
+	@tracked publicKey;
 	message;
+
+	@action selectKey(key) {
+		if (key) {
+			this.publicKey = key.publicKey;
+		}
+	}
 
 	@action async submit() {
 		let { publicKey, message } = this;
