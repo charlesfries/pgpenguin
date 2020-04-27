@@ -3,9 +3,11 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class EncryptController extends Controller {
+
 	@tracked publicKey;
-	message;
+	@tracked message;
 	@tracked result;
+	@tracked error;
 
 	@action selectKey(key) {
 		if (key) {
@@ -23,7 +25,7 @@ export default class EncryptController extends Controller {
 			});
 			this.result = encrypted;
 		} catch(err) {
-			console.error(err)
+			this.error = err.message;
 		}
 	}
 
