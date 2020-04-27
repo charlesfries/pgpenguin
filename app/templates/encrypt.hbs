@@ -1,4 +1,4 @@
-<main class="container-fluid py-3">
+<main>
 
 	{{#if error}}
 		<div class="alert alert-danger " role="alert">
@@ -29,7 +29,7 @@
 </main>
 
 {{#if result}}
-	<footer class="bg-dark text-light shadow-lg p-3">
+	<footer>
 		<p class="text-success"><FaIcon @icon="check" /> Success</p>
 		<pre><code class="text-light">{{result}}</code></pre>
 	</footer>

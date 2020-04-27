@@ -15,6 +15,14 @@ body { display: grid; grid-template-areas: "nav nav" "main aside" "footer footer
 	footer { grid-area: footer; }
 }
 
+main {
+	@extend .container-fluid, .py-3;
+}
+
 aside { background-color: $light;
 	border-left: 1px solid $border-color;
+}
+
+footer {
+	@extend .bg-dark, .text-light, .shadow-lg, .p-3;
 }

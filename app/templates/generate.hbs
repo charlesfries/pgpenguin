@@ -1,6 +1,7 @@
-<main class="p-3">
+<main>
 
 	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
+		<form.element @property="nickname" @controlType="text" @label="Nickname" @placeholder="e.g. My Key" @required={{true}} />
 		<form.element @property="name" @controlType="text" @label="Name (Optional)" @placeholder="e.g. John Smith" />
 		<form.element @property="email" @controlType="text" @label="Email (Optional)" @placeholder="e.g. john.smith@gmail.com" />
 		<BsButton @defaultText="Generate" @type="primary" @buttonType="submit" />
@@ -9,6 +10,20 @@
 </main>
 
 {{#if key}}
+	<footer>
+		<p class="text-success"><FaIcon @icon="check" /> Saved locally</p>
+		<div class="row">
+			<div class="col">
+				<pre><code class="text-light">{{key.privateKey}}</code></pre>
+			</div>
+			<div class="col">
+				<pre><code class="text-light">{{key.publicKey}}</code></pre>
+			</div>
+		</div>
+	</footer>
+{{/if}}
+
+{{!-- {{#if key}}
 	<aside class="p-3">
 
 		<span class="text-success"><FaIcon @icon="check" /> Saved locally</span>
@@ -28,4 +43,4 @@
 		</div>
 
 	</aside>
-{{/if}}
+{{/if}} --}}
