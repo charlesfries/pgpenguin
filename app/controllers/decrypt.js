@@ -3,10 +3,12 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class DecryptController extends Controller {
-	@tracked result;
+
 	@tracked privateKey;
 	password;
 	message;
+	@tracked result;
+	@tracked error;
 
 	@action selectKey(key) {
 		if (key) {
@@ -15,17 +17,30 @@ export default class DecryptController extends Controller {
 	}
 
 	@action async submit() {
-		let { privateKey, password, message } = this;
+		let { privateKey: privateKeyArmored, password, message } = this;
 
+		this.error = null;
+
+		let pk;
 		try {
-			const { keys: [privateKey] } = await openpgp.key.readArmored(privateKey);
-			let thing = await privateKey.decrypt(passphrase);
-			
-			console.log(thing)
-
-			this.result = thing;
+			const { keys: [privateKey] } = await openpgp.key.readArmored(privateKeyArmored);
+			await privateKey.decrypt(password);
+			pk = privateKey;
 		} catch(err) {
-			console.error(err)
+			this.error = err.message;
+		}
+
+		if (pk) {
+			try {
+				const { data: decrypted } = await openpgp.decrypt({
+					message: await openpgp.message.readArmored(message),
+					privateKeys: [pk]
+				});
+				this.result = decrypted;
+			} catch(err) {
+				this.error = err.message;
+			}
 		}
 	}
+
 }

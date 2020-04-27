@@ -1,12 +1,19 @@
-<main class="p-3">
+<main class="p-3 mb-3">
+
+	{{#if error}}
+		<div class="alert alert-danger " role="alert">
+			<strong>Error.</strong> {{error}}
+			<button type="button" class="close" {{action (mut error)}}>&times;</button>
+		</div>
+	{{/if}}
 
 	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
 
 		<KeyDropdown @keys={{model}} @onSelect={{action "selectKey"}} />
-		<form.element @controlType="textarea" @label="Private key" @property="privateKey" @rows={{26}} @required={{true}} />
+		<form.element @property="privateKey" @controlType="textarea" @label="Private key" @rows={{26}} @required={{true}} />
 
-		<form.element @controlType="password" @label="Password (Optional)" @property="password" />
-		<form.element @controlType="textarea" @label="Message" @property="message" @rows={{10}} @required={{true}} />
+		<form.element @property="password" @controlType="password" @label="Password (Optional)" />
+		<form.element @property="message" @controlType="textarea" @label="Message" @rows={{10}} @required={{true}} />
 
 		<BsButton @defaultText="Decrypt" @type="primary" @buttonType="submit" />
 
