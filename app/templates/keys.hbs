@@ -1,4 +1,8 @@
+{{outlet}}
+
 <main class="container-fluid py-3">
+
+	<h4 class="mb-3">Local keys ({{model.length}})</h4>
 
 	{{#if model}}
 		<table class="table table-bordered table-hover">
@@ -34,9 +38,3 @@
 	{{/if}}
 
 </main>
-
-{{outlet}}
-
-<footer class="text-muted p-3 border-top">
-	{{model.length}} keys
-</footer>

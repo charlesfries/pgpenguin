@@ -1,54 +1,60 @@
-<aside class="p-3">
+<section>
 
 	<LinkTo @route="keys.index" @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary mb-3">
 		<FaIcon @icon="times" /> Close
 	</LinkTo>
 
-	<div class="card mb-3">
-		<h5 class="card-header">Details</h5>
-		<div class="card-body">
-			<ul class="list-unstyled">
-				<li>Nickname: {{model.nickname}}</li>
-				<li>Created at: {{timestamp model.createdAt}}</li>
-				<li>Name: {{model.name}}</li>
-				<li>Email: {{model.email}}</li>
-			</ul>
-			<div class="btn-group btn-group-sm mt-auto" role="group">
-				<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Encrypt</button>
-				<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Decrypt</button>
-				<button type="button" class="btn btn-danger" {{action "delete"}}><FaIcon @icon="trash" /> Delete</button>
+	<div class="row">
+
+		<div class="col">
+			<div class="card">
+				<h5 class="card-header">Details</h5>
+				<div class="card-body">
+					<ul class="list-unstyled">
+						<li>Nickname: {{model.nickname}}</li>
+						<li>Created at: {{timestamp model.createdAt}}</li>
+						<li>Name: {{model.name}}</li>
+						<li>Email: {{model.email}}</li>
+					</ul>
+					<div class="btn-group btn-group-sm mt-auto" role="group">
+						<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Encrypt</button>
+						<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Decrypt</button>
+						<button type="button" class="btn btn-danger" {{action "delete"}}><FaIcon @icon="trash" /> Delete</button>
+					</div>
+				</div>
 			</div>
 		</div>
-	</div>
 
-	<div class="card mb-3">
-		<h5 class="card-header">Private key</h5>
-		<div class="card-body">
-			<div class="btn-group btn-group-sm" role="group">
-				<button type="button" class="btn btn-outline-primary" {{on "click" this.copyPrivate}}><FaIcon @icon="clone" /> Copy</button>
-				{{!-- <button type="button" class="btn btn-outline-primary" {{action (mut privateOpen) true}}><FaIcon @icon="eye" /> Show</button> --}}
+		<div class="col">
+			<div class="card">
+				<h5 class="card-header">Private key</h5>
+				<div class="card-body">
+					<div class="btn-group btn-group-sm" role="group">
+						<button type="button" class="btn btn-outline-primary" {{on "click" this.copyPrivate}}><FaIcon @icon="clone" /> Copy</button>
+						<button type="button" class="btn btn-outline-primary" {{action (mut privateOpen) true}}><FaIcon @icon="eye" /> Show</button>
+					</div>
+					{{#if privateOpen}}
+						<p class="card-text"><pre><code>{{model.privateKey}}</code></pre></p>
+					{{/if}}
+				</div>
 			</div>
-			<p class="card-text"><pre><code>{{model.privateKey}}</code></pre></p>
 		</div>
-	</div>
-	
-	<div class="card mb-3">
-		<h5 class="card-header">Public key</h5>
-		<div class="card-body">
-			<div class="btn-group btn-group-sm" role="group">
-				<button type="button" class="btn btn-outline-primary" {{on "click" this.copyPublic}}><FaIcon @icon="clone" /> Copy</button>
-				{{!-- <button type="button" class="btn btn-outline-primary" {{action (mut publicOpen) true}}><FaIcon @icon="eye" /> Show</button> --}}
+
+		<div class="col">
+			<div class="card">
+				<h5 class="card-header">Public key</h5>
+				<div class="card-body">
+					<div class="btn-group btn-group-sm" role="group">
+						<button type="button" class="btn btn-outline-primary" {{on "click" this.copyPublic}}><FaIcon @icon="clone" /> Copy</button>
+						<button type="button" class="btn btn-outline-primary" {{action (mut publicOpen) true}}><FaIcon @icon="eye" /> Show</button>
+					</div>
+					{{#if publicOpen}}
+						<p class="card-text"><pre><code>{{model.publicKey}}</code></pre></p>
+					{{/if}}
+				</div>
 			</div>
-			<p class="card-text"><pre><code>{{model.publicKey}}</code></pre></p>
 		</div>
+
 	</div>
-	
-</aside>
 
-<BsModalSimple @open={{privateOpen}} @title="Private key" @onHidden={{action (mut privateOpen) false}}>
-	<pre><code>{{model.privateKey}}</code></pre>
-</BsModalSimple>
-
-<BsModalSimple @open={{publicOpen}} @title="Public key" @onHidden={{action (mut publicOpen) false}}>
-	<pre><code>{{model.publicKey}}</code></pre>
-</BsModalSimple>
+</section>

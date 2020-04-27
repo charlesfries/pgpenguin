@@ -7,12 +7,21 @@ $font-size-base: .875rem;
 
 // layout
 
-body { display: grid; grid-template-areas: "nav nav" "main aside" "footer footer";
-	grid-template-columns: 1fr auto; grid-template-rows: auto 1fr auto; height: 100vh;
+body { display: grid; grid-template-areas: "nav nav" "section section" "main aside" "footer footer";
+	grid-template-columns: 1fr auto; grid-template-rows: auto auto 1fr auto; height: 100vh;
 	nav { grid-area: nav; }
+	section { grid-area: section; }
 	main { grid-area: main; overflow-y: auto; }
 	aside { grid-area: aside; overflow-y: auto; }
 	footer { grid-area: footer; }
+}
+
+nav {
+	@extend .shadow-sm;
+}
+
+section {
+	@extend .bg-light, .border-bottom, .shadow-sm, .p-3;
 }
 
 main {
@@ -24,5 +33,7 @@ aside { background-color: $light;
 }
 
 footer {
-	@extend .bg-dark, .text-light, .shadow-lg, .p-3;
+	// @extend .bg-dark, .text-light, .shadow-lg, .p-3;
+
+	@extend .bg-light, .border-top, .shadow-lg, .p-3;
 }
