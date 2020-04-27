@@ -18,7 +18,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#each this.keys as |key|}}
+				{{#each this.model as |key|}}
 					<tr>
 						<td><FaIcon @icon="lock" /></td>
 						<td>{{if key.nickname (timestamp key.nickname) "-"}}</td>

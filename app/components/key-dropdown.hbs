@@ -1,12 +1,8 @@
 <div class="form-group">
 	<label for="exampleFormControlSelect1">Local keys</label>
-	{{#if @keys}}
-		<select class="form-control" id="exampleFormControlSelect1" {{on "change" this.onSelecter}}>
-			{{#each @keys as |key|}}
-				<option value={{key.id}}>{{key.nickname}}</option>
-			{{/each}}
-		</select>
-	{{else}}
-		<br>No keys found.
-	{{/if}}
+	<select class="form-control" id="exampleFormControlSelect1" disabled={{if @keys false true}} {{on "change" this.onSelecter}}>
+		{{#each @keys as |key|}}
+			<option value={{key.id}}>{{key.nickname}}</option>
+		{{/each}}
+	</select>
 </div>
