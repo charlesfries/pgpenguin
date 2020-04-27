@@ -2,9 +2,9 @@
 
 <main class="container-fluid py-3">
 
-	<h4 class="mb-3">Local keys ({{model.length}})</h4>
+	<h4 class="mb-3">Local keys ({{this.model.length}})</h4>
 
-	{{#if model}}
+	{{#if this.model}}
 		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
@@ -18,14 +18,14 @@
 				</tr>
 			</thead>
 			<tbody>
-				{{#each model as |key|}}
+				{{#each this.keys as |key|}}
 					<tr>
 						<td><FaIcon @icon="lock" /></td>
 						<td>{{if key.nickname (timestamp key.nickname) "-"}}</td>
 						<td>{{timestamp key.createdAt}}</td>
 						<td>{{key.name}}</td>
 						<td>{{key.email}}</td>
-						<td>abcxyz</td>
+						<td>{{key.fingerprint}}</td>
 						<td class="py-0 align-middle">
 							<LinkTo @route="keys.key" @model={{key}} @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">View</LinkTo>
 						</td>

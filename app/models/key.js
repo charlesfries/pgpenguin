@@ -7,10 +7,15 @@ export default class KeyModel extends Model {
 	@attr('string') publicKey;
 
 	get name() {
-		return openpgp.key.readArmored(this.publicKey)
+		return openpgp.key.readArmored(this.publicKey);
 	}
 
 	get email() {
-		return 'asdf@gmail.com';
+		return openpgp.key.readArmored(this.publicKey);
 	}
+
+	get fingerprint() {
+		return 'Unknown';
+	}
+
 }
