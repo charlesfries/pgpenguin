@@ -1,4 +1,4 @@
-<main class="p-3 mb-3">
+<main class="container-fluid py-3">
 
 	{{#if error}}
 		<div class="alert alert-danger " role="alert">
@@ -9,13 +9,21 @@
 
 	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
 
-		<KeyDropdown @keys={{model}} @onSelect={{action "selectKey"}} />
-		<form.element @property="privateKey" @controlType="textarea" @label="Private key" @rows={{26}} @required={{true}} />
+		<div class="row">
+			<div class="col">
 
-		<form.element @property="password" @controlType="password" @label="Password (Optional)" />
-		<form.element @property="message" @controlType="textarea" @label="Message" @rows={{10}} @required={{true}} />
+				<KeyDropdown @keys={{model}} @onSelect={{action "selectKey"}} />
+				<form.element @property="privateKey" @controlType="textarea" @label="Private key" @rows={{26}} @required={{true}} />
+				<form.element @property="password" @controlType="password" @label="Password (Optional)" />
+			
+			</div>
+			<div class="col">
 
-		<BsButton @defaultText="Decrypt" @type="primary" @buttonType="submit" />
+				<form.element @property="message" @controlType="textarea" @label="Message" @rows={{10}} @required={{true}} />
+				<BsButton @defaultText="Decrypt" @type="primary" @buttonType="submit" />
+			
+			</div>
+		</div>
 
 	</BsForm>
 

@@ -2,12 +2,20 @@
 
 	<BsForm @formLayout="vertical" @model={{this}} @onSubmit={{action "submit"}} as |form|>
 
-		<KeyDropdown @keys={{model}} @onSelect={{action "selectKey"}} />
-		<form.element @controlType="textarea" @label="Public key" @property="publicKey" @rows={{22}} @required={{true}} />
+		<div class="row">
+			<div class="col">
 
-		<form.element @controlType="textarea" @label="Unencrypted message" @property="message" @rows={{10}} @required={{true}} />
+				<KeyDropdown @keys={{model}} @onSelect={{action "selectKey"}} />
+				<form.element @property="publicKey" @controlType="textarea" @label="Public key" @rows={{22}} @required={{true}} />
+			
+			</div>
+			<div class="col">
 
-		<BsButton @defaultText="Encrypt" @type="primary" @buttonType="submit" />
+				<form.element @property="message" @controlType="textarea" @label="Unencrypted message" @rows={{10}} @required={{true}} />
+				<BsButton @defaultText="Encrypt" @type="primary" @buttonType="submit" />
+			
+			</div>
+		</div>
 
 	</BsForm>
 

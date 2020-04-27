@@ -6,5 +6,15 @@ export default class DecryptRoute extends Route {
 		controller.model = model;
 		controller.selectKey(model.firstObject);
 	}
+
+	resetController(controller, isExiting) {
+		if (isExiting) {
+			controller.privateKey = null;
+			controller.password = null;
+			controller.message = null;
+			controller.result = null;
+			controller.error = null;
+		}
+	}
 	
 }

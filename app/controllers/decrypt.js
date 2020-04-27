@@ -5,8 +5,8 @@ import { action } from '@ember/object';
 export default class DecryptController extends Controller {
 
 	@tracked privateKey;
-	password;
-	message;
+	@tracked password;
+	@tracked message;
 	@tracked result;
 	@tracked error;
 
