@@ -1,14 +1,14 @@
 <main class="container-fluid py-3">
 
 	{{#if model}}
-		<table class="table table-hover">
+		<table class="table table-bordered table-hover">
 			<thead>
 				<tr>
 					<th scope="col">Type</th>
 					<th scope="col">Nickname</th>
+					<th scope="col">Created</th>
 					<th scope="col">Name</th>
 					<th scope="col">Email</th>
-					<th scope="col">Created</th>
 					<th scope="col">Fingerprint</th>
 					<th scope="col">Actions</th>
 				</tr>
@@ -16,11 +16,11 @@
 			<tbody>
 				{{#each model as |key|}}
 					<tr>
-						<td>Standard</td>
+						<td><FaIcon @icon="lock" /></td>
 						<td>{{if key.nickname (timestamp key.nickname) "-"}}</td>
+						<td>{{timestamp key.createdAt}}</td>
 						<td>{{key.name}}</td>
 						<td>{{key.email}}</td>
-						<td>{{timestamp key.createdAt}}</td>
 						<td>abcxyz</td>
 						<td class="py-0 align-middle">
 							<LinkTo @route="keys.key" @model={{key}} @tagName="button" @type="button" @class="btn btn-sm btn-outline-secondary">View</LinkTo>

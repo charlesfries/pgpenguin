@@ -9,9 +9,9 @@
 		<div class="card-body">
 			<ul class="list-unstyled">
 				<li>Nickname: {{model.nickname}}</li>
+				<li>Created at: {{timestamp model.createdAt}}</li>
 				<li>Name: {{model.name}}</li>
 				<li>Email: {{model.email}}</li>
-				<li>Created at: {{timestamp model.createdAt}}</li>
 			</ul>
 			<div class="btn-group btn-group-sm mt-auto" role="group">
 				<button type="button" class="btn btn-secondary" {{action (mut xyz)}}>Encrypt</button>

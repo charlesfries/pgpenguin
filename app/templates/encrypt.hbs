@@ -30,6 +30,9 @@
 
 {{#if result}}
 	<footer>
+		<BsButton @size="sm" @type="secondary" @outline={{true}} @class="mb-3" @onClick={{action (mut result) null}}>
+			<FaIcon @icon="times" /> Close
+		</BsButton>
 		<p class="text-success"><FaIcon @icon="check" /> Success</p>
 		<pre><code class="text-light">{{result}}</code></pre>
 	</footer>

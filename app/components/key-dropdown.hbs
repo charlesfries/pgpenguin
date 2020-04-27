@@ -3,7 +3,7 @@
 	{{#if @keys}}
 		<select class="form-control" id="exampleFormControlSelect1" {{on "change" this.onSelecter}}>
 			{{#each @keys as |key|}}
-				<option value={{key.id}}>{{key.createdAt}}</option>
+				<option value={{key.id}}>{{key.nickname}}</option>
 			{{/each}}
 		</select>
 	{{else}}
